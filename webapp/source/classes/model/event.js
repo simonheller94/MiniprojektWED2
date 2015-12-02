@@ -4,16 +4,20 @@
 define(['app/services/uuidService'], function(uuidService) {
     'use strict';
 
-    return{
-        id : uuidService.getRandomUuid(),
-        name : '',
-        description : '',
-        targetGroup : '',
-        contributionsDescription : '',
-        maximumAmountOfGuests : '',
-        location : {name: '', street: '', zipCode: '', city: ''},
-        times: {begin: 0, end: 0},
-        guests : []
-    }
+    var Event = function (id, name, description, targetGroup, contributionsDescription, location, times, maximumAmountOfGuests) {
+        this.id = id || uuidService.getRandomUuid();
+        this.name = name;
+        this.description = description;
+        this.targetGroup = targetGroup;
+        this.contributionsDescription = contributionsDescription;
+        this.maximumAmountOfGuests = maximumAmountOfGuests;
+        this.location = location;
+        this.times = times;
+        this.guests = [];
+
+        //times und location getter und setter
+    };
+
+    return Event;
 
 });

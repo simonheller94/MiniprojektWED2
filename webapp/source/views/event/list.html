@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-
-<body data-ng-app="lafete">
+<div>
     <ul data-ng-controller="EventListController">
         <li data-ng-repeat="event in events">
-            {{event.name}}, {{event.place}}, {{event.date | date:"dd.MM.yy"}}
+
+            <h1><a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong></a></h1>
+            <p>Description: {{event.description}}</p>
+            <p>Target: {{event.targetGroup}}</p>
+
+            <h2>Location</h2>
+            <p>Name: {{ event.location.name }}</p>
+            <p>Street: {{ event.location.street }}</p>
+            <p>City: {{ event.location.plz }} {{ event.location.city }}</p>
+
+            <h2>Date</h2>
+            <p>Begin: {{event.times.begin | date: 'dd.MM.yy'}} End: {{event.times.end | date: 'dd.MM.yy'}}</p>
+
         </li>
     </ul>
-</body>
-</html>
+</div>

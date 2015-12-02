@@ -1,0 +1,24 @@
+<div class="eventDetails">
+
+    <h1>{{event.name}}</h1>
+    <p>{{event.description}}</p>
+    <p><strong>Maximal amount of guests:</strong>
+        {{event.maximumAmountOfGuests}}
+    </p>
+
+    <h3>Target group</h3>
+    <p>{{event.targetGroup}}</p>
+
+    <h3>Contribution</h3>
+    <p>{{event.contributionsDescription}}</p>
+
+    <h3>Location</h3>
+    <p>
+        {{event.location.name}}<br />
+        {{event.location.street}}<br />
+        {{event.location.plz}} {{event.location.city}}
+    </p>
+
+    <h3>Date & time</h3>
+    <p>{{event.times.begin | date:"dd.MM.yy"}} - {{event.times.end | date:"dd.MM.yy"}}</p>
+</div>
