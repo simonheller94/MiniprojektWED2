@@ -6,9 +6,11 @@
 define(['frameworks/angular',
         'app/controllers/event/EventListController',
         'app/controllers/event/EventDetailController',
+        'app/controllers/event/NewEventController',
+        'app/controllers/guest/NewGuestController',
         'app/repository/eventRepository',
         'libraries/angularRoute'],
-    function (Angular, EventListController, EventDetailController, EventRepository) {
+    function (Angular, EventListController, EventDetailController, NewEventController, NewGuestController, EventRepository) {
         "use strict";
 
         //module
@@ -25,6 +27,12 @@ define(['frameworks/angular',
         EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository'];
         Lafete.controller('EventDetailController', EventDetailController);
 
+        NewEventController.$inject = ['$scope', 'EventRepository'];
+        Lafete.controller('NewEventController', NewEventController);
+
+        NewGuestController.$inject = ['$scope', 'EventRepository'];
+        Lafete.controller('NewGuestController', NewGuestController);
+
 
 
         Lafete.config(function($routeProvider){
@@ -36,6 +44,17 @@ define(['frameworks/angular',
                    controller: 'EventDetailController',
                    templateUrl: 'views/event/detail.html'
                })
+
+               .when('/newEvent', {
+                    controller: 'NewEventController',
+                    templateUrl: 'views/event/newEvent.html'
+                })
+
+               .when('/newGuest', {
+                   controller: 'NewGuestController',
+                   templateUrl: 'views/event/newGuest.html'
+               })
+
                .otherwise({
                    redirectTo: '/list'
                });
