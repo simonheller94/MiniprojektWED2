@@ -54,9 +54,12 @@ define(['frameworks/angular',
                    controller: 'NewGuestController',
                    templateUrl: 'views/event/newGuest.html'
                })
+               .when('/', {
+                   templateUrl: 'views/event/home.html'
+               })
 
                .otherwise({
-                   redirectTo: '/list'
+                   redirectTo: '/'
                });
         });
 

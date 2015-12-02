@@ -1,6 +1,3 @@
-/**
- * Created by simon on 02.12.2015.
- */
 
 define(['app/model/event'], function(Event){
 
