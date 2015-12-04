@@ -1,19 +1,25 @@
-<div>
+<div class="eventlist">
     <ul data-ng-controller="EventListController">
         <li data-ng-repeat="event in events">
+        <div class="wrapper">
+            <div class="eventcontainer">
+                <div class="titlehead">
+                    <h4 class="title"><a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong></a></h4>
+                </div>
+                <div class="post">
+                    <p>Begin: {{event.times.begin | date: 'dd.MM.yy hh:mm'}} End: {{event.times.end | date: 'dd.MM.yy hh:mm'}}</p>
+                </div>
+                <div class="content">
+                    <p><strong>Description:</strong> {{event.description}}</p>
+                    <p><strong>Target:</strong> {{event.targetGroup}}</p>
 
-            <h1><a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong></a></h1>
-            <p>Description: {{event.description}}</p>
-            <p>Target: {{event.targetGroup}}</p>
-
-            <h2>Location</h2>
-            <p>Name: {{ event.location.name }}</p>
-            <p>Street: {{ event.location.street }}</p>
-            <p>City: {{ event.location.plz }} {{ event.location.city }}</p>
-
-            <h2>Date</h2>
-            <p>Begin: {{event.times.begin | date: 'dd.MM.yy hh:mm'}} End: {{event.times.end | date: 'dd.MM.yy hh:mm'}}</p>
-
+                    <p><strong>Location:</strong></p>
+                    <p>{{ event.location.name }}</p>
+                    <p>{{ event.location.street }}</p>
+                    <p>{{ event.location.plz }} {{ event.location.city }}</p>
+                </div>
+            </div>
+        </div>
         </li>
     </ul>
 </div>

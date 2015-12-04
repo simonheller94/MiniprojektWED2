@@ -1,0 +1,59 @@
+
+.eventlist ul{
+    list-style-type: none;
+}
+
+a{
+    color: white;
+}
+
+.wrapper{
+    position:relative;
+    width:50%;
+    padding-bottom:40%;
+    height:0;
+    overflow:hidden;
+    margin-top: 20px;
+}
+.eventcontainer{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color: #dddddd;
+}
+
+.titlehead{
+
+    background-color:#689e18;
+    height:45px;
+    font:24px Tahoma, Geneva, sans-serif;
+    color:#FFF;
+    width: 385px;
+    margin-left:-10px;
+}
+
+.titlehead h1{
+    margin-left: 20px;
+}
+
+.title{
+    margin-left: 20px;
+    line-height:45px;
+}
+
+.post{
+    color:#656565;
+    font:12px Tahoma, sans-serif;
+    line-height: 30px;
+    margin-left: 15px;
+}
+
+.content{
+    font:12px Tahoma, sans-serif;
+    color:#1f1e1e;
+    margin-top:10px;
+    /*line-height:23px;*/
+    margin-left: 15px;
+
+    letter-spacing:1px;
+}

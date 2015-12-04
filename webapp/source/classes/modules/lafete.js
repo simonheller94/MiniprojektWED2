@@ -16,9 +16,9 @@ define(['frameworks/angular',
         //module
         var Lafete = Angular.module('lafete', ['ngRoute']);
 
-            //repositories
-           // EventRepository.$inject = ['$http'];
-            Lafete.service('EventRepository', EventRepository);
+        //repositories
+        EventRepository.$inject = ['$http'];
+        Lafete.service('EventRepository', EventRepository);
 
         //controllers
         EventListController.$inject = ['$scope', 'EventRepository'];
@@ -55,7 +55,7 @@ define(['frameworks/angular',
                    templateUrl: 'views/event/newGuest.html'
                })
                .when('/', {
-                   templateUrl: 'views/event/home.html'
+                   templateUrl: 'views/home.html'
                })
 
                .otherwise({

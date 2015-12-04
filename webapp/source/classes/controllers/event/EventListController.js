@@ -1,6 +1,3 @@
-/**
- * Created by simon on 28.10.2015.
- */
 
 define([], function(){
     'use strict';
@@ -8,7 +5,9 @@ define([], function(){
     var EventListController = function($scope, EventRepository){
 
         this.scope = $scope;
-        this.scope.events = EventRepository.all();
+        EventRepository.allEvents(function(events){
+            this.scope.events = events;
+        }.bind(this));
     };
 
     return EventListController;

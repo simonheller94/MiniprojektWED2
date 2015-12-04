@@ -3,7 +3,7 @@
  */
 define(['app/model/event', 'tests/factories/eventFactory'],
     function(Event, EventFactory) {
-        'use strict'
+        'use strict';
 
         describe('Event', function() {
             var event;
@@ -15,7 +15,7 @@ define(['app/model/event', 'tests/factories/eventFactory'],
             describe('event id', function() {
                 it('is a UUID', function() {
                     var uuidRegex = new RegExp('[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}');
-                    expect(Event.id).toMatch(uuidRegex);
+                    expect(event.id).toMatch(uuidRegex);
                 })
             })
         });

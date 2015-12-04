@@ -3,19 +3,28 @@
  */
 define(['app/model/event'], function (Event) {
 
-    var eventRepository = function() {
+    var eventRepository = function($http) {
 
-        this.events = [
-            { id: 1, name: 'Lunch', description: "blabla", targetGroup: "Alle", contributionDescription: "Chueche", location: { name: 'HSR', street:'Oberseestrasse', plz: 8640, city: 'Rapperswil'}, times: {begin: new Date(2015, 9, 22, 11, 00), end: new Date(2015, 9, 22, 12, 40)}, maximumAmountOfGuests: 50 },
-            { id: 2, name: 'Dinner', description: "blabla", targetGroup: "Alle", contributionDescription: "Guetzli", location: { name: 'HSR', street:'Oberseestrasse', plz: 8640, city: 'Rapperswil'}, times: {begin: new Date(2015, 9, 22, 10, 00), end: new Date(2015, 9, 22, 16, 00)}, maximumAmountOfGuests: 250 },
-            { id: 3, name: 'Zmorge', description: "blabla", targetGroup: "Familie", contributionDescription: "Egal", location: { name: 'HSR', street:'Oberseestrasse', plz: 8640, city: 'Rapperswil'}, times: {begin: new Date(2015, 9, 22, 15, 00), end: new Date(2015, 9, 22, 23, 50)}, maximumAmountOfGuests: 100 }
-        ];
-
-        this.all = function () {
-            return this.events;
+        this.urls = {
+            all: '/api/events',
+            get: '/api/events/:eventId',
+            add: '/api/events'
         };
 
-        this.get = function (id){
+        this.events = [];
+
+        this.allEvents = function (successCallback) {
+            $http.get(this.urls.all)
+                .success(function(data){
+                    var events  = data.events.map(function(eventDTO){
+                        return Event.createFromDTO(eventDTO);
+                    });
+                    successCallback(events);
+                });
+        };
+
+
+        this.getEvent = function (id){
             var event = this.events.filter(function(event){
                 return event.id == id;
             })[0];
@@ -23,7 +32,13 @@ define(['app/model/event'], function (Event) {
         };
 
         this.addEvent = function(event){
-            events.add(event);
+            if(this.getEvent(event.id)) {
+                return false;
+            } else {
+
+                this.events.push(event);
+                return true;
+            }
         };
 
         this.addGuest = function(guest){
