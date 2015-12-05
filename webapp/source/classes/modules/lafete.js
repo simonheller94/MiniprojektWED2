@@ -7,7 +7,7 @@ define(['frameworks/angular',
         'app/controllers/event/EventListController',
         'app/controllers/event/EventDetailController',
         'app/controllers/event/NewEventController',
-        //'app/controllers/event/UpdateEventController',
+        'app/controllers/event/UpdateEventController',
         'app/controllers/guest/NewGuestController',
         //'app/controllers/guest/UpdateGuestController',
         'app/repository/eventRepository',
@@ -16,7 +16,7 @@ define(['frameworks/angular',
               EventListController,
               EventDetailController,
               NewEventController,
-              //UpdateEventController,
+              UpdateEventController,
               NewGuestController,
               //UpdateGuestController,
               EventRepository) {
@@ -39,8 +39,8 @@ define(['frameworks/angular',
         NewEventController.$inject = ['$scope', 'EventRepository'];
         Lafete.controller('NewEventController', NewEventController);
 
-        /*UpdateEventController.$inject = ['$scope', 'EventRepository'];
-        Lafete.controller('UpdateEventController', UpdateEventController);*/
+        UpdateEventController.$inject = ['$scope', '$routeParams', 'EventRepository'];
+        Lafete.controller('UpdateEventController', UpdateEventController);
 
         NewGuestController.$inject = ['$scope', '$routeParams', 'EventRepository'];
         Lafete.controller('NewGuestController', NewGuestController);

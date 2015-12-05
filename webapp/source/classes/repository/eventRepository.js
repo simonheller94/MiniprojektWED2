@@ -34,7 +34,7 @@ define(['app/model/event'], function (Event) {
         this.addEvent = function(event, path, successCallback){
             $http.post( this.urls.add , event, path).
             success(function(){
-                location.href=path
+                location.href=path;
                 successCallback();
             });
         };
@@ -46,6 +46,13 @@ define(['app/model/event'], function (Event) {
                   successCallback();
               })
         }
+
+        this.updateEvent = function(id, event, successCallback){
+            $http.post(this.urls.add + id, event).
+                success(function(){
+                successCallback();
+            })
+        };
     };
 
     return eventRepository;
