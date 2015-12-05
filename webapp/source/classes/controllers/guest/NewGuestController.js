@@ -4,14 +4,17 @@
 
 define(['app/model/guest'], function(Guest){
 
-    var NewGuestController = function($scope){
+    var NewGuestController = function($scope, $routeParams, EventRepository){
+
+        var eventId = $routeParams.eventId;
 
         $scope.guest = new Guest();
 
         $scope.addNewGuest = function(){
-
-            console.log("Es gaht au");
-        }
+            EventRepository.addGuest($scope.event, function()
+            {
+            });
+        };
 
     };
 

@@ -38,8 +38,11 @@ define(['app/model/event'], function (Event) {
             });
         };
 
-        this.addGuest = function(guest){
-          events.guests.add(guest);
+        this.addGuest = function(id, guest, successCallback){
+          $http.post( this.urls.add + id + '/guests', guest)
+              .success(function(){
+                  successCallback();
+              })
         }
     };
 
