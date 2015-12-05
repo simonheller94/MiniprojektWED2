@@ -20,11 +20,14 @@
     </p>
 
     <h3>Date & time</h3>
-    <p>{{event.times.begin | date:"dd.MM.yy"}} - {{event.times.end | date:"dd.MM.yy"}}</p>
+    <p>{{event.times.begin | date:"dd.MM.yy hh:mm"}} - {{event.times.end | date:"dd.MM.yy hh:mm"}}</p>
 
+    <form action="{{ '#/newGuest/Event/' +  event.id }}" method="get">
+        <button class="btn btn-sm btn-default" type="submit">add new Guest</button>
+    </form>
 
     <div data-ng-repeat="guest in event.guests">
-
+        
 
 
     </div>

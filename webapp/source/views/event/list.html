@@ -7,7 +7,8 @@
                     <h4 class="title"><a data-ng-href="#/events/{{event.id}}"><strong>{{event.name}}</strong></a></h4>
                 </div>
                 <div class="post">
-                    <p>Begin: {{event.times.begin | date: 'dd.MM.yy hh:mm'}} End: {{event.times.end | date: 'dd.MM.yy hh:mm'}}</p>
+                    <p>{{event.times.begin | date: 'dd.MM.yy hh:mm'}} bis
+                    {{event.times.end | date: 'dd.MM.yy hh:mm'}}</p>
                 </div>
                 <div class="content">
                     <p><strong>Description:</strong> {{event.description}}</p>

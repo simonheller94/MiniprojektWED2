@@ -7,7 +7,7 @@ define(['app/model/event'], function (Event) {
 
         this.urls = {
             all: '/api/events',
-            get: '/api/events/:eventId',
+            get: '/api/events/',
             add: '/api/events'
         };
 
@@ -24,21 +24,18 @@ define(['app/model/event'], function (Event) {
         };
 
 
-        this.getEvent = function (id){
-            var event = this.events.filter(function(event){
-                return event.id == id;
-            })[0];
-            return (event) ? event : null;
+        this.getEvent = function (id, successCallback){
+            $http.get(this.urls.get + id)
+                .success(function(data){
+                    successCallback(data);
+                })
         };
 
-        this.addEvent = function(event){
-            if(this.getEvent(event.id)) {
-                return false;
-            } else {
-
-                this.events.push(event);
-                return true;
-            }
+        this.addEvent = function(event, successCallback){
+            $http.post( this.urls.add , event).
+            success(function(){
+                successCallback();
+            });
         };
 
         this.addGuest = function(guest){

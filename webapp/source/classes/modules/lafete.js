@@ -7,10 +7,19 @@ define(['frameworks/angular',
         'app/controllers/event/EventListController',
         'app/controllers/event/EventDetailController',
         'app/controllers/event/NewEventController',
+        'app/controllers/event/UpdateEventController',
         'app/controllers/guest/NewGuestController',
+        'app/controllers/guest/UpdateGuestController',
         'app/repository/eventRepository',
         'libraries/angularRoute'],
-    function (Angular, EventListController, EventDetailController, NewEventController, NewGuestController, EventRepository) {
+    function (Angular,
+              EventListController,
+              EventDetailController,
+              NewEventController,
+              UpdateEventController,
+              NewGuestController,
+              UpdateGuestController,
+              EventRepository) {
         "use strict";
 
         //module
@@ -30,8 +39,14 @@ define(['frameworks/angular',
         NewEventController.$inject = ['$scope', 'EventRepository'];
         Lafete.controller('NewEventController', NewEventController);
 
+        UpdateEventController.$inject = ['$scope', 'EventRepository'];
+        Lafete.controller('UpdateEventController', UpdateEventController);
+
         NewGuestController.$inject = ['$scope', 'EventRepository'];
         Lafete.controller('NewGuestController', NewGuestController);
+
+        UpdateGuestController.$inject = ['$scope', 'EventRepository'];
+        Lafete.controller('UpdateGuestController', UpdateGuestController);
 
 
 
@@ -50,10 +65,21 @@ define(['frameworks/angular',
                     templateUrl: 'views/event/newEvent.html'
                 })
 
-               .when('/newGuest', {
+               .when('/updateEvent', {
+                 controller: 'UpdateEventController',
+                     templateUrl: 'views/event/updateEvent.html'
+                })
+
+               .when('/newGuest/event/:eventId', {
                    controller: 'NewGuestController',
-                   templateUrl: 'views/event/newGuest.html'
+                   templateUrl: 'views/guest/newGuest.html'
                })
+
+               .when('/updateGuest/event/:eventId', {
+                   controller: 'UpdateGuestController',
+                   templateUrl: 'views/guest/updateGuest'
+               })
+
                .when('/', {
                    templateUrl: 'views/home.html'
                })
