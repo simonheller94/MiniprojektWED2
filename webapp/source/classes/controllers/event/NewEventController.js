@@ -5,8 +5,8 @@ define(['app/model/event'], function(Event){
 
         $scope.event = new Event();
 
-        $scope.addNewEvent = function(){
-            EventRepository.addEvent($scope.event, function()
+        $scope.addNewEvent = function(loc){
+            EventRepository.addEvent($scope.event, loc, function()
             {
             });
         };

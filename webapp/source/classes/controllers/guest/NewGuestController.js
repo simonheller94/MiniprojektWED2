@@ -1,6 +1,3 @@
-/**
- * Created by simon on 02.12.2015.
- */
 
 define(['app/model/guest'], function(Guest){
 
@@ -10,9 +7,10 @@ define(['app/model/guest'], function(Guest){
 
         $scope.guest = new Guest();
 
-        $scope.addNewGuest = function(){
-            EventRepository.addGuest($scope.event, function()
+        $scope.addNewGuest = function(loc){
+            EventRepository.addGuest(eventId, $scope.guest, loc+eventId,  function()
             {
+
             });
         };
 

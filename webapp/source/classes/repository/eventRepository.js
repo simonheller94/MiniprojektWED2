@@ -8,7 +8,7 @@ define(['app/model/event'], function (Event) {
         this.urls = {
             all: '/api/events',
             get: '/api/events/',
-            add: '/api/events'
+            add: '/api/events/'
         };
 
         this.events = [];
@@ -31,16 +31,18 @@ define(['app/model/event'], function (Event) {
                 })
         };
 
-        this.addEvent = function(event, successCallback){
-            $http.post( this.urls.add , event).
+        this.addEvent = function(event, path, successCallback){
+            $http.post( this.urls.add , event, path).
             success(function(){
+                location.href=path
                 successCallback();
             });
         };
 
-        this.addGuest = function(id, guest, successCallback){
-          $http.post( this.urls.add + id + '/guests', guest)
+        this.addGuest = function(id, guest, path, successCallback){
+          $http.post( this.urls.add + id + '/guests', guest, path)
               .success(function(){
+                  location.href=path;
                   successCallback();
               })
         }

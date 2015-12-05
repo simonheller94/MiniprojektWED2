@@ -1,6 +1,3 @@
-/**
- * Created by simon on 28.10.2015.
- */
 
 require.config({
     // base url relative to the index.html
