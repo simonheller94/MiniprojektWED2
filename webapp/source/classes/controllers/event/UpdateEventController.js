@@ -9,10 +9,6 @@ define([], function(){
 
         this.$scope = $scope;
 
-        $scope.eventUpdatedSuccessfully = false;
-        $scope.updatingEventError = false;
-
-
         EventRepository.allEvents(function(data){
             this.$scope.events = data;
             $scope.event = data[0];
@@ -20,7 +16,7 @@ define([], function(){
             $scope.event.times.end = new Date(data[0].times.end);
         }.bind(this));
 
-        $scope.pinCurrentEventToScope = function(event){
+        $scope.getCurrentEvent = function(event){
             $scope.event = event;
             $scope.event.times.begin = new Date(event.times.begin);
             $scope.event.times.end = new Date(event.times.end);
@@ -33,7 +29,7 @@ define([], function(){
                 name: $scope.event.name,
                 description: $scope.event.description,
                 targetGroup: $scope.event.targetGroup,
-                maxNumberGuests: $scope.event.maxNumberGuests,
+                contributionsDescription: $scope.event.contributionsDescription,
                 location: {
                     name: $scope.event.location.name,
                     street: $scope.event.location.street,
@@ -43,14 +39,14 @@ define([], function(){
                 times: {
                     begin: new Date($scope.event.times.begin),
                     end: new Date($scope.event.times.end)
-                }
-            }, function () {
-                $scope.successfullEventUpdated = true;
-            }, function () {
-                $scope.errorUpdatingEvent = true;
+                },
+                maximumAmountOfGuests: $scope.event.maximumAmountOfGuests,
+            }, function(){
+                console.log("ja");
             });
         }
-        };
+
+    };
         return UpdateEventController;
 
 });

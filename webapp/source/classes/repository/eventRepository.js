@@ -48,8 +48,8 @@ define(['app/model/event'], function (Event) {
         }
 
         this.updateEvent = function(id, event, successCallback){
-            $http.post(this.urls.add + id, event).
-                success(function(){
+            $http.post(this.urls.add + id, event)
+                .success(function(){
                 successCallback();
             })
         };

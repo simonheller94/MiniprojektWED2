@@ -1,7 +1,7 @@
 <div>
     <h1>Update Event</h1>
 
-    <select ng-model="event" ng-options="event.name for event in events" ng-change="pinCurrentEventToScope(event)">
+    <select ng-model="event" ng-options="event.name for event in events" ng-change="getCurrentEvent(event)">
     </select>
 
     <h1>Event information</h1>
