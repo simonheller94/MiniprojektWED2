@@ -1,6 +1,7 @@
 
 .eventlist ul{
     list-style-type: none;
+
 }
 
 a{
@@ -14,6 +15,7 @@ a{
     height:0;
     overflow:hidden;
     margin-top: 20px;
+    z-index: 2;
 }
 .eventcontainer{
     position:absolute;

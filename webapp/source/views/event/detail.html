@@ -1,6 +1,9 @@
 <div class="eventDetails">
 
     <h1>{{event.name}}</h1>
+
+    <div class="detailcontent">
+
     <p>{{event.description}}</p>
     <p>{{event.guests.length}}</p>
     <p><strong>Maximal amount of guests:</strong>
@@ -23,15 +26,18 @@
     <h3>Date & time</h3>
     <p>{{event.times.begin | date:"dd.MM.yy hh:mm"}} - {{event.times.end | date:"dd.MM.yy hh:mm"}}</p>
 
+    </div>
+
     <form action="{{ '#/newGuest/events/' +  event.id }}" method="get">
-        <button type="submit">add new Guest</button>
+        <button class="buttons" type="submit">add new Guest</button>
     </form>
 
-    <div data-ng-repeat="guest in event.guests">
+
+    <div class="guests" data-ng-repeat="guest in event.guests">
         <p>Name: {{ guest.name }}</p>
         <p>Nimmt mit: {{ guest.contribution }}</p>
         <p>Kommentar: {{ guest.comment }}</p>
-        <p>Komme nicht: {{ guest.canceled }}</p>
+
     </div>
 
 

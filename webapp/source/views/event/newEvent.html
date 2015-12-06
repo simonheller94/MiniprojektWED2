@@ -1,42 +1,66 @@
-<div>
+<div class="newEventcontainer">
     <h1>Add new event</h1>
 
-    <p>Event</p>
-    <label for="eventname">Name</label>
-    <input ng-model="event.name" type="text" id="eventname"><br/>
+    <form class="form-style">
+        <ul>
+            <li>
+                <label for="eventname">Name</label>
+                <input class="input" ng-model="event.name" type="text" id="eventname">
+            </li>
 
-    <label for="description">Description</label>
-    <input ng-model="event.description" type="text" id="description"><br/>
+            <li>
+                <label for="description">Description</label>
+                <input ng-model="event.description" type="text" id="description">
+            </li>
 
-    <label for="targetgroup">TargetGroup</label>
-    <input ng-model="event.targetGroup" type="text" id="targetgroup"><br/>
+            <li>
+                <label for="targetgroup">TargetGroup</label>
+                <input ng-model="event.targetGroup" type="text" id="targetgroup">
+            </li>
 
-    <label for="contributionsDescription">Contribution Description</label>
-    <input ng-model="event.contributionsDescription" type="text" id="contributionsDescription"><br/>
+            <li>
+                <label for="contributionsDescription">Contribution Description</label>
+                <input ng-model="event.contributionsDescription" type="text" id="contributionsDescription">
+            </li>
 
-    <label for="maximalAmountOfGuests">Maximal amount of Guests</label>
-    <input ng-model="event.maximalAmountOfGuests" type="number" id="maximalAmountOfGuests"><br/>
+            <li>
+                <label for="maximalAmountOfGuests">Maximal amount of Guests</label>
+                <input ng-model="event.maximalAmountOfGuests" type="number" id="maximalAmountOfGuests">
+            </li>
 
-    <p>Location</p>
-    <label for="locationname">Name</label>
-    <input ng-model="event.location.name" type="text" id="locationname"><br/>
+            <li>
+                <label for="locationname">Name</label>
+                <input ng-model="event.location.name" type="text" id="locationname">
+            </li>
 
-    <label for="street">Street</label>
-    <input ng-model="event.location.street" type="text" id="street"><br/>
+            <li>
+                <label for="street">Street</label>
+                <input ng-model="event.location.street" type="text" id="street">
+            </li>
 
-    <label for="plz">plz</label>
-    <input ng-model="event.location.plz" type="number" id="plz"><br/>
+            <li>
+                <label for="plz">plz</label>
+                <input ng-model="event.location.plz" type="number" id="plz">
+            </li>
 
-    <label for="city">City</label>
-    <input ng-model="event.location.city" type="text" id="city"><br/>
+            <li>
+                <label for="city">City</label>
+                <input ng-model="event.location.city" type="text" id="city">
+            </li>
 
-    <p>Date & Time</p>
-    <label for="begin">Begin</label>
-    <input ng-model="event.times.begin" type="datetime" id="begin"><br/>
+            <li>
+                <label for="begin">Begin</label>
+                <input ng-model="event.times.begin" type="datetime" id="begin">
+            </li>
 
-    <label for="end">End</label>
-    <input ng-model="event.times.end" type="datetime" id="end"><br/>
+            <li>
+                <label for="end">End</label>
+                <input ng-model="event.times.end" type="datetime" id="end">
+            </li>
+        </ul>
+    </form>
 
-    <button type="button" ng-click="addNewEvent('#/list/')">Create new event</button>
+    <br/>
+    <button type="button" class="buttons" ng-click="addNewEvent('#/list/')">Create new event</button>
 
 </div>

@@ -1,62 +1,27 @@
 
-.eventlist ul{
-    list-style-type: none;
-}
+.eventDetails button{
+    margin: 20px;
 
-a{
-    color: white;
 }
-
-.wrapper{
-    position:relative;
-    width:50%;
-    padding-bottom:40%;
-    height:0;
-    overflow:hidden;
-    margin-top: 20px;
-}
-.eventcontainer{
-    /*height:265px;
-    background-color: #dddddd;
-    width: 615px;*/
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-color: #dddddd;
-}
-
-.titlehead{
-
-    background-color:#689e18;
-    height:45px;
-    font:24px Tahoma, Geneva, sans-serif;
-    color:#FFF;
-    width: 385px;
-    margin-left:-10px;
-}
-
-.titlehead h1{
+.detailcontent{
+    border: solid;
     margin-left: 20px;
+    padding-left: 10px;
 }
 
-.title{
+.detailcontent p{
+    margin-left: 5px;
+
+}
+
+.detailcontent h3{
+    margin-left: 5px;
+}
+
+.guests {
     margin-left: 20px;
-    line-height:45px;
+    margin-top: 5px;
+    padding: 10px;
+    border: solid;
 }
 
-.post{
-    color:#656565;
-    font:12px Tahoma, sans-serif;
-    line-height: 30px;
-    margin-left: 15px;
-}
-
-.content{
-    font:12px Tahoma, sans-serif;
-    color:#1f1e1e;
-    margin-top:10px;
-    /*line-height:23px;*/
-    margin-left: 15px;
-
-    letter-spacing:1px;
-}
