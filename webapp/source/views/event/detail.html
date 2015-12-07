@@ -29,7 +29,7 @@
     </div>
 
     <form action="{{ '#/newGuest/events/' +  event.id }}" method="get">
-        <button class="buttons" type="submit">add new Guest</button>
+        <button class="buttons" id="add" type="submit">add new guest</button>
     </form>
 
 
@@ -37,6 +37,12 @@
         <p>Name: {{ guest.name }}</p>
         <p>Nimmt mit: {{ guest.contribution }}</p>
         <p>Kommentar: {{ guest.comment }}</p>
+
+        <form action="#/updateGuest" method="get">
+            <button class="buttons" type="submit">update guest</button>
+        </form>
+
+        <button class="buttons" type="submit" ng-click="deleteGuest('#/events/', guest)">delete</button>
 
     </div>
 

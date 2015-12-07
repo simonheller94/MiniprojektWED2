@@ -1,8 +1,8 @@
 
-.eventDetails button{
+.eventDetails #add{
     margin: 20px;
-
 }
+
 .detailcontent{
     border: solid;
     margin-left: 20px;
@@ -22,6 +22,12 @@
     margin-left: 20px;
     margin-top: 5px;
     padding: 10px;
+    padding-bottom: 50px;
     border: solid;
+}
+
+.guests button{
+    float: left;
+    margin-right: 5px;
 }
 

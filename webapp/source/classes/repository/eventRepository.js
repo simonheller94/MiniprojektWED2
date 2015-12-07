@@ -45,7 +45,7 @@ define(['app/model/event'], function (Event) {
                   location.href=path;
                   successCallback();
               })
-        }
+        };
 
         this.updateEvent = function(id, event, successCallback){
             $http.post(this.urls.add + id, event)
@@ -53,6 +53,14 @@ define(['app/model/event'], function (Event) {
                 successCallback();
             })
         };
+
+        this.deleteGuest  = function(eventid, guest, path, successCallback){
+            $http.post(this.urls.get +eventid + '/guests/' + guest.id +'/delete', guest)
+                .success(function(){
+                    location.href = path;
+                    successCallback();
+                })
+        }
     };
 
     return eventRepository;

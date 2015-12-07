@@ -9,7 +9,7 @@ define(['frameworks/angular',
         'app/controllers/event/NewEventController',
         'app/controllers/event/UpdateEventController',
         'app/controllers/guest/NewGuestController',
-        //'app/controllers/guest/UpdateGuestController',
+        'app/controllers/guest/UpdateGuestController',
         'app/repository/eventRepository',
         'libraries/angularRoute'],
     function (Angular,
@@ -18,7 +18,7 @@ define(['frameworks/angular',
               NewEventController,
               UpdateEventController,
               NewGuestController,
-              //UpdateGuestController,
+              UpdateGuestController,
               EventRepository) {
         "use strict";
 
@@ -45,8 +45,8 @@ define(['frameworks/angular',
         NewGuestController.$inject = ['$scope', '$routeParams', 'EventRepository'];
         Lafete.controller('NewGuestController', NewGuestController);
 
-        /*UpdateGuestController.$inject = ['$scope', 'EventRepository'];
-        Lafete.controller('UpdateGuestController', UpdateGuestController);*/
+        UpdateGuestController.$inject = ['$scope', 'EventRepository'];
+        Lafete.controller('UpdateGuestController', UpdateGuestController);
 
 
 
@@ -75,17 +75,13 @@ define(['frameworks/angular',
                    templateUrl: 'views/guest/newGuest.html'
                })
 
-               .when('/updateGuest/event/:eventId', {
+               .when('/updateGuest', {
                    controller: 'UpdateGuestController',
-                   templateUrl: 'views/guest/updateGuest'
-               })
-
-               .when('/', {
-                   templateUrl: 'views/home.html'
+                   templateUrl: 'views/guest/updateGuest.html'
                })
 
                .otherwise({
-                   redirectTo: '/'
+                   redirectTo: '/list'
                });
         });
 

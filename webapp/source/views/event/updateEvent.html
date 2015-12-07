@@ -1,54 +1,62 @@
 <div>
     <h1>Update Event</h1>
 
+    <div class="select-style">
     <select ng-model="event" ng-options="event.name for event in events" ng-change="getCurrentEvent(event)">
     </select>
+    </div>
 
     <h1>Event information</h1>
 
-    <label for="eventname">Name</label>
-    <input ng-model="event.name" type="text" id="eventname"><br/>
+    <form class="form-style">
+        <ul>
+            <li>
+                <label for="eventname">Name</label>
+                <input ng-model="event.name" type="text" id="eventname">
+            </li>
+            <li>
+                <label for="description">Description</label>
+                <input ng-model="event.description" type="text" id="description">
+            </li>
+            <li>
+                <label for="targetgroup">TargetGroup</label>
+                <input ng-model="event.targetGroup" type="text" id="targetgroup">
+            </li>
+            <li>
+                <label for="contributionsDescription">Contribution Description</label>
+                <input ng-model="event.contributionsDescription" type="text" id="contributionsDescription">
+            </li>
+            <li>
+                <label for="maximalAmountOfGuests">Maximal amount of Guests</label>
+                <input ng-model="event.maximalAmountOfGuests" type="number" id="maximalAmountOfGuests">
+            </li>
+            <li>
+                <label for="locationname">Name</label>
+                <input ng-model="event.location.name" type="text" id="locationname">
+            </li>
+            <li>
+                <label for="street">Street</label>
+                <input ng-model="event.location.street" type="text" id="street">
+            </li>
+            <li>
+                <label for="plz">plz</label>
+                <input ng-model="event.location.plz" type="number" id="plz">
+            </li>
+            <li>
+                <label for="city">City</label>
+                <input ng-model="event.location.city" type="text" id="city">
+            </li>
+            <li>
+                <label for="begin">Begin</label>
+                <input ng-model="event.times.begin" type="datetime-local" id="begin">
+            </li>
+            <li>
+                <label for="end">End</label>
+                <input ng-model="event.times.end" type="datetime-local" id="end">
+            </li>
+        </ul>
+    </form>
 
-    <label for="description">Description</label>
-    <input ng-model="event.description" type="text" id="description"><br/>
+    <button id="updateEventButton" class="buttons" type="Button" ng-click="updateEventInformation()">Update Event</button>
 
-    <label for="targetgroup">TargetGroup</label>
-    <input ng-model="event.targetGroup" type="text" id="targetgroup"><br/>
-
-    <label for="contributionsDescription">Contribution Description</label>
-    <input ng-model="event.contributionsDescription" type="text" id="contributionsDescription"><br/>
-
-    <label for="maximalAmountOfGuests">Maximal amount of Guests</label>
-    <input ng-model="event.maximalAmountOfGuests" type="number" id="maximalAmountOfGuests"><br/>
-
-    <p>Location</p>
-    <label for="locationname">Name</label>
-    <input ng-model="event.location.name" type="text" id="locationname"><br/>
-
-    <label for="street">Street</label>
-    <input ng-model="event.location.street" type="text" id="street"><br/>
-
-    <label for="plz">plz</label>
-    <input ng-model="event.location.plz" type="number" id="plz"><br/>
-
-    <label for="city">City</label>
-    <input ng-model="event.location.city" type="text" id="city"><br/>
-
-    <p>Date & Time</p>
-    <label for="begin">Begin</label>
-    <input ng-model="event.times.begin" type="datetime" id="begin"><br/>
-
-    <label for="end">End</label>
-    <input ng-model="event.times.end" type="datetime" id="end"><br/>
-    </br>
-
-    <button class="btn btn-sm btn-default" type="Button" ng-click="updateEventInformation()">Update Event</button>
-
-    <div class="alert alert-success" ng-show="eventUpdatedSuccessfully">
-        <strong>Well done!</strong> Event successfully updated.
-    </div>
-
-    <div class="alert alert-danger" ng-show="updatingEventError">
-        <strong>A problem has occurred </strong> The event could not be updated.
-    </div>
 </div>

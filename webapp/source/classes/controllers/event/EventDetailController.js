@@ -13,6 +13,12 @@ define([], function(){
         EventRepository.getEvent(eventId, function(event){
             this.scope.event = event;
         }.bind(this));
+
+        $scope.deleteGuest = function(loc, guest){
+            EventRepository.deleteGuest(eventId, guest, loc+eventId, function(){
+
+            }.bind(this));
+        }
     };
 
     return EventDetailController;

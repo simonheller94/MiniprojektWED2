@@ -43,9 +43,10 @@ function findEvent(id) {
     })[0];
 }
 
-function createGuest(event, name, contribution, comment){
+function createGuest(event, id, name, contribution, comment){
     if(event && event.guests) {
         var guest = {
+            id:(id) ? id : ++guestId,
             name : name,
             contribution: contribution,
             comment: comment
@@ -54,6 +55,20 @@ function createGuest(event, name, contribution, comment){
         return guest;
     } else {
         return null;
+    }
+}
+
+function findGuest(event, guestId) {
+    return event.guests.filter(function(guest) {
+        return guest.id == guestId
+    })[0];
+}
+
+function deleteGuest(event, guest){
+    var index = event.guests.indexOf(guest);
+
+    if(index > -1){
+        event.guests.splice(index, 1);
     }
 }
 
@@ -78,8 +93,8 @@ var event1 = createEvent(
         end: new Date('2011-11-16T03:00:00')
     }
 );
-createGuest(event1, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
-createGuest(event1, "Hans", "Hotdog-Cake", null );
+createGuest(event1, 1, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
+createGuest(event1, 2, "Hans", "Hotdog-Cake", null );
 
 var event2 = createEvent(
     null,
@@ -241,6 +256,16 @@ app.post('/api/events/:eventId/guests/:guestId', function(request, response) {
     }
 });
 
+app.post('api/events/:eventId/guests/:guestId/delete', function(request, response) {
+    var event = findEvent(request.params.eventId);
+    if(event){
+        var guest = findGuest(event, request.params.guestId);
+        if(guest) {
+            deleteGuest(event, guest);
+            response.status(500).send("test");
+        }
+    }
+});
 
 /**
  * Server start
