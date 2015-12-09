@@ -22,7 +22,7 @@ define(['app/model/guest'], function (Guest) {
         };
 
         this.deleteGuest  = function(id, guest, path, successCallback){
-            $http.post(this.urls.get.replace(':eventId', id).replace(':guestId', guest.id)+'/delete', guest, path)
+            $http.post(this.urls.delete.replace(':eventId', id).replace(':guestId', guest.id), guest, path)
                 .success(function(){
                     location.href = path+'/';
                     successCallback();
