@@ -1,6 +1,4 @@
-/**
- * Created by simon on 04.11.2015.
- */
+
 define(['app/model/event'], function (Event) {
 
     var eventRepository = function($http) {

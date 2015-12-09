@@ -1,12 +1,11 @@
 
 define([], function(){
 
-    var Guest = function(id, name, contribution, comment, canceled){
+    var Guest = function(id, name, contribution, comment){
         this.id = id;
         this.name = name;
         this.contribution = contribution;
         this.comment = comment;
-        this.canceled = canceled;
     };
 
     return Guest;

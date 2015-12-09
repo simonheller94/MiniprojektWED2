@@ -4,7 +4,7 @@ define(['app/model/event'], function (Event) {
     var EventFactory = {
         createEvent: function(identifier) {
             return new Event(
-                null,
+                identifier,
                 'Simons birthday',
                 'The greatest birthday party simon ever had',
                 'Friends of Simon',

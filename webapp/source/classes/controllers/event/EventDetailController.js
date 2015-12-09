@@ -4,7 +4,7 @@
 define([], function(){
     'use strict';
 
-    var EventDetailController = function($scope, $routeParams, EventRepository) {
+    var EventDetailController = function($scope, $routeParams, EventRepository, GuestRepository) {
 
         var eventId = $routeParams.eventId;
 
@@ -15,7 +15,7 @@ define([], function(){
         }.bind(this));
 
         $scope.deleteGuest = function(loc, guest){
-            EventRepository.deleteGuest(eventId, guest, loc+eventId, function(){
+            GuestRepository.deleteGuest(eventId, guest, loc+eventId, function(){
 
             }.bind(this));
         }

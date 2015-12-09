@@ -11,6 +11,7 @@ define(['frameworks/angular',
         'app/controllers/guest/NewGuestController',
         'app/controllers/guest/UpdateGuestController',
         'app/repository/eventRepository',
+        'app/repository/guestRepository',
         'libraries/angularRoute'],
     function (Angular,
               EventListController,
@@ -19,7 +20,8 @@ define(['frameworks/angular',
               UpdateEventController,
               NewGuestController,
               UpdateGuestController,
-              EventRepository) {
+              EventRepository,
+              GuestRepository) {
         "use strict";
 
         //module
@@ -29,11 +31,14 @@ define(['frameworks/angular',
         EventRepository.$inject = ['$http'];
         Lafete.service('EventRepository', EventRepository);
 
+        GuestRepository.$inject = ['$http'];
+        Lafete.service('GuestRepository', GuestRepository);
+
         //controllers
         EventListController.$inject = ['$scope', 'EventRepository'];
         Lafete.controller('EventListController', EventListController);
 
-        EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository'];
+        EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository', 'GuestRepository'];
         Lafete.controller('EventDetailController', EventDetailController);
 
         NewEventController.$inject = ['$scope', 'EventRepository'];

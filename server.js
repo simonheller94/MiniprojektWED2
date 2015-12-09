@@ -96,8 +96,8 @@ var event1 = createEvent(
     },
     10
 );
-createGuest(event1, 1, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
-createGuest(event1, 2, "Hans", "Hotdog-Cake", null );
+createGuest(event1, 1234234, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
+createGuest(event1, 21312342, "Hans", "Hotdog-Cake", null );
 
 var event2 = createEvent(
     null,
@@ -118,7 +118,7 @@ var event2 = createEvent(
     20
 );
 
-createGuest(event2, 1, "F. Meier", null, null );
+createGuest(event2, 11234234, "F. Meier", null, null );
 
 
 /**
