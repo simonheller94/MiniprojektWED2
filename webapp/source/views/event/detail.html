@@ -1,48 +1,66 @@
 <div class="eventDetails">
 
-    <h1>{{event.name}}</h1>
+
+    <div class="detailtitle">
+    <div class="detailname">
+        <h1>{{event.name}}</h1>
+    </div>
+
+    <div class="guestnumber">
+        <p>Guests: {{event.guests.length}}</p>
+    </div>
+
+    </div>
 
     <div class="detailcontent">
 
-    <p>{{event.description}}</p>
-    <p>{{event.guests.length}}</p>
-    <p><strong>Maximal amount of guests:</strong>
-        {{event.maximumAmountOfGuests}}
-    </p>
+        <h3>Description</h3>
+        <p>{{event.description}}</p>
 
-    <h3>Target group</h3>
-    <p>{{event.targetGroup}}</p>
+        <p><strong>Maximal amount of guests:</strong>
+        {{event.maxGuests}}
+        </p>
 
-    <h3>Contribution</h3>
-    <p>{{event.contributionsDescription}}</p>
+        <h3>Target group</h3>
+        <p>{{event.targetGroup}}</p>
 
-    <h3>Location</h3>
-    <p>
-        {{event.location.name}}<br />
-        {{event.location.street}}<br />
-        {{event.location.plz}} {{event.location.city}}
-    </p>
+        <h3>Contribution</h3>
+        <p>{{event.contributionsDescription}}</p>
 
-    <h3>Date & time</h3>
-    <p>{{event.times.begin | date:"dd.MM.yy hh:mm"}} - {{event.times.end | date:"dd.MM.yy hh:mm"}}</p>
+        <h3>Location</h3>
+        <p>
+            {{event.location.name}}<br />
+            {{event.location.street}}<br />
+            {{event.location.plz}} {{event.location.city}}
+        </p>
+
+        <h3>Date & time</h3>
+        <p>{{event.times.begin | date:"dd.MM.yy hh:mm"}} - {{event.times.end | date:"dd.MM.yy hh:mm"}}</p>
 
     </div>
 
     <form action="{{ '#/newGuest/events/' +  event.id }}" method="get">
-        <button class="buttons" id="add" type="submit">add new guest</button>
+        <button id="addguest" class="buttons" id="add" type="submit">add new guest</button>
     </form>
 
 
     <div class="guests" data-ng-repeat="guest in event.guests">
-        <p>Name: {{ guest.name }}</p>
-        <p>Nimmt mit: {{ guest.contribution }}</p>
-        <p>Kommentar: {{ guest.comment }}</p>
+        <h3>Name</h3>
+        <p>{{ guest.name }}</p>
+        <h3>Contribution</h3>
+        <p>{{ guest.contribution }}</p>
+        <h3>Comment</h3>
+        <p>{{ guest.comment }}</p>
 
-        <form action="#/updateGuest" method="get">
+        <form id="updateguest" action="#/updateGuest" method="get">
             <button class="buttons" type="submit">update guest</button>
         </form>
 
-        <button class="buttons" type="submit" ng-click="deleteGuest('#/events/', guest)">delete</button>
+        <div class="filler">
+            <p>   </p>
+        </div>
+
+        <button if="deleteguest" class="buttons" type="submit" ng-click="deleteGuest('#/events/', guest)">delete</button>
 
     </div>
 

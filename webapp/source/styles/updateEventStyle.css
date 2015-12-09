@@ -21,4 +21,8 @@
 
 #updateEventButton{
     margin-left: 20px;
+    float: left;
+    width: 99%;
+    margin-bottom: 20px;
+
 }
