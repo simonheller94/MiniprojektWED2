@@ -39,11 +39,14 @@ define(['app/model/event'], function (Event) {
             });
         };
 
-        this.addGuest = function(id, guest, path, successCallback){
+        this.addGuest = function(id, guest, path, successCallback, errorCallback){
           $http.post( this.urls.add + id + '/guests', guest, path)
               .success(function(){
                   location.href=path;
                   successCallback();
+              })
+              .error(function(){
+                  errorCallback();
               })
         };
 
@@ -55,9 +58,9 @@ define(['app/model/event'], function (Event) {
         };
 
         this.deleteGuest  = function(eventid, guest, path, successCallback){
-            $http.post(this.urls.get +eventid + '/guests/' + guest.id +'/delete', guest)
+            $http.post(this.urls.get +eventid + '/guests/' + guest.id +'/delete', guest, path)
                 .success(function(){
-                    location.href = path;
+                    location.href = path+'/';
                     successCallback();
                 })
         }

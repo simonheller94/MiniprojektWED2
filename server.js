@@ -16,9 +16,10 @@ var allowCrossDomain = function(request, response, next) {
  * Event / guest storage
  */
 var eventId = 0;
+var guestId = 0;
 var events = [];
 
-function createEvent(id, name, description, targetGroup, contributionsDescription, location, times){
+function createEvent(id, name, description, targetGroup, contributionsDescription, location, times, maxGuests){
     if(name) {
         var event = {
             id: (id) ? id : ++eventId,
@@ -28,6 +29,7 @@ function createEvent(id, name, description, targetGroup, contributionsDescriptio
             contributionsDescription: contributionsDescription,
             location:location,
             times : times,
+            maxGuests : maxGuests,
             guests:[]
         };
         events.push(event);
@@ -91,7 +93,8 @@ var event1 = createEvent(
     {
         begin: new Date('2015-11-15T19:00:00'),
         end: new Date('2011-11-16T03:00:00')
-    }
+    },
+    10
 );
 createGuest(event1, 1, "Michael", "Schoggi-Kuchen", "Bin sicher zu früh" );
 createGuest(event1, 2, "Hans", "Hotdog-Cake", null );
@@ -111,10 +114,11 @@ var event2 = createEvent(
     {
         begin: new Date('2015-11-20T18:00:00'),
         end: new Date('2011-11-20T21:00:00')
-    }
+    },
+    20
 );
 
-createGuest(event2, "F. Meier", null, null );
+createGuest(event2, 1, "F. Meier", null, null );
 
 
 /**
@@ -145,12 +149,13 @@ app.post('/api/events', function(request, response) {
        request.body.targetGroup,
        request.body.contributionsDescription,
        request.body.location,
-       request.body.times
+       request.body.times,
+        request.body.maxGuests
    );
    if(event) {
        response.json(event);
    } else {
-       response.status(400).send('Event data incomplete.');
+       response.status(400).send('Eventdata not found');
    }
 });
 
@@ -159,7 +164,7 @@ app.get('/api/events/:id', function(request, response) {
     if (event) {
         response.json(event);
     } else {
-        response.status(404).send('Event (id '+request.params.id+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
@@ -184,12 +189,12 @@ app.post('/api/events/:id', function(request, response) {
         if(request.body.times && event.times != request.body.times) {
             event.times = request.body.times;
         }
-        if(request.body.maxNumberGuests && event.maxNumberGuests != request.body.maxNumberGuests) {
-            event.maxNumberGuests = request.body.maxNumberGuests;
+        if(request.body.maxGuests && event.maxGuests != request.body.maxGuests) {
+            event.maxGuests = request.body.maxGuests;
         }
         response.json(event);
     } else {
-        response.status(404).send('Event (id '+request.params.id+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
@@ -198,20 +203,28 @@ app.get('/api/events/:id/guests', function(request, response) {
     if(event){
         response.json({ guests: event.guests });
     } else{
-        response.status(404).send('Event (id '+request.params.id+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
 app.post('/api/events/:id/guests', function(request, response) {
     var event = findEvent(request.params.id);
     if(event){
+        var actualGuests = event.guests.length;
+        if(event.maxGuests <= actualGuests){
+            response.status(500).send('maximal amount of guests already reached')
+        }else{
         response.json(createGuest(
-            event,request.body.name,
+            event,
+            request.body.id,
+            request.body.name,
             request.body.contribution,
             request.body.comment
+
         ));
+        }
     } else{
-        response.status(404).send('Event (id '+request.params.id+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
@@ -222,10 +235,10 @@ app.get('/api/events/:eventId/guests/:guestId', function(request, response) {
         if(guest) {
             response.json(guest);
         } else {
-            response.status(404).send('Guest (id '+request.params.guestId+') not found.')
+            response.status(404).send('Guest not found.')
         }
     } else{
-        response.status(404).send('Event (id '+request.params.eventId+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
@@ -249,20 +262,23 @@ app.post('/api/events/:eventId/guests/:guestId', function(request, response) {
 
             response.json(guest);
         } else {
-            response.status(404).send('Guest (id '+request.params.guestId+') not found.')
+            response.status(404).send('Guest not found.')
         }
     } else{
-        response.status(404).send('Event (id '+request.params.eventId+') not found.')
+        response.status(404).send('Event not found.')
     }
 });
 
-app.post('api/events/:eventId/guests/:guestId/delete', function(request, response) {
+app.post('/api/events/:eventId/guests/:guestId/delete', function(request, response) {
     var event = findEvent(request.params.eventId);
     if(event){
         var guest = findGuest(event, request.params.guestId);
         if(guest) {
             deleteGuest(event, guest);
-            response.status(500).send("test");
+            response.json(guest);
+        }
+        else {
+            response.status(404).send('Guest not found.')
         }
     }
 });

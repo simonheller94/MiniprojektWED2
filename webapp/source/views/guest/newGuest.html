@@ -20,4 +20,9 @@
         </ul>
     </form>
     <button id="signforevent" type="button"  class="buttons" ng-click="addNewGuest('#/events/')">register for event</button>
+
+    <div class="alert" ng-show="errorMessage">
+        <p>reached maximal amount of guests</p>
+    </div>
+    
 </div>

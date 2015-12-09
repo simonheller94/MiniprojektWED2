@@ -1,15 +1,15 @@
 define(['app/services/uuidService'], function(uuidService) {
     'use strict';
 
-    var Event = function (id, name, description, targetGroup, contributionsDescription, location, times, maximumAmountOfGuests) {
+    var Event = function (id, name, description, targetGroup, contributionsDescription, location, times, maxGuests) {
         this.id = id || uuidService.getRandomUuid();
         this.name = name;
         this.description = description;
         this.targetGroup = targetGroup;
         this.contributionsDescription = contributionsDescription;
-        this.maximumAmountOfGuests = maximumAmountOfGuests;
         this.location = location;
         this.times = times;
+        this.maxGuests = maxGuests;
         this.guests = [];
 
         /*Object.defineProperty(location, 'name', {
@@ -77,7 +77,7 @@ define(['app/services/uuidService'], function(uuidService) {
             jsonData.contributionsDescription,
             jsonData.location,
             jsonData.times,
-            jsonData.maximumAmountOfGuests
+            jsonData.maxGuests
         )
 
     };
