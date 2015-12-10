@@ -4,6 +4,7 @@ define(['app/model/guest'], function (Guest) {
     var guestRepository = function($http) {
 
         this.urls = {
+            get: '/api/events/:eventId/guests/:guestId',
             add: '/api/events/:eventId/guests',
             delete: '/api/events/:eventId/guests/:guestId/delete',
             update: '/api/events/:eventId/guests/:guestId'
@@ -39,7 +40,6 @@ define(['app/model/guest'], function (Guest) {
                     location.href = path+'/';
                     successCallback();
                 })
-<<<<<<< HEAD
         };
 
         this.testdeleteGuest  = function(id, guest, successCallback){
@@ -48,8 +48,7 @@ define(['app/model/guest'], function (Guest) {
                     successCallback();
                 })
         };
-=======
-        }
+
         this.updateGuest = function( eventId, guestId, guest, path, successCallback, errorCallback ){
             $http.post( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId), guest, path)
                 .success(function(){
@@ -61,7 +60,7 @@ define(['app/model/guest'], function (Guest) {
             })
         };
 
->>>>>>> origin/workspace
+
     };
 
     return guestRepository;
