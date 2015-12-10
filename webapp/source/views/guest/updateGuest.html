@@ -1,0 +1,24 @@
+<div>
+
+    <h1>Edit guest</h1>
+
+    <form class="form-style">
+        <ul>
+            <li>
+                <label for="guestname">Name</label>
+                <input ng-model="guest.name" type="text" id="guestname">
+            </li>
+
+            <li>
+                <label for="contribution">Contribution</label>
+                <input ng-model="guest.contribution" type="text" id="contribution">
+            </li>
+            <li>
+                <label for="comment">Comment</label>
+                <input ng-model="guest.comment" type="text" id="comment">
+            </li>
+        </ul>
+    </form>
+    <button id="updateguest" type="button"  class="buttons" ng-click="updateGuest('#/events/')">update guest</button>
+
+</div>
