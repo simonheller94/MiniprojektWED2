@@ -10,7 +10,7 @@ define(['tests/factories/eventFactory',
         'use strict';
 
         describe('EventRepository', function() {
-            var event, eventRepository, $http, $httpBackend;
+            var event,events, eventRepository, $http, $httpBackend;
 
             // setup
             beforeEach(AngularMocks.inject(function($injector) {
@@ -39,7 +39,7 @@ define(['tests/factories/eventFactory',
             describe('getEvent()', function() {
                describe('by id', function() {
                    it('get same event', function () {
-                       eventRepository.get(event.id, function(newEvent){
+                       eventRepository.getEvent(event.id, function(newEvent){
                            expect(event.id).toEqual(newEvent.id);
                        }, function(){});
                        $httpBackend.flush();
@@ -47,18 +47,22 @@ define(['tests/factories/eventFactory',
                });
 
                 describe('by inexistent id', function() {
-                    it('returns null', function() {
-                        eventRepository.get(null, function() {
+
+                    it('returns error with null', function() {
+                        eventRepository.getEvent(null, function() {
                         }, function(error){
                             expect(error).toEqual('Event with id null not found.');
                         });
+                        $httpBackend.flush();
+                    });
 
-                        eventRepository.get('test', function() {
+                    it('returns error with false id', function(){
+                        eventRepository.getEvent('test', function() {
                         }, function(error){
                             expect(error).toEqual('Event with id test not found.');
                         });
                         $httpBackend.flush();
-                    });
+                    })
                 });
             });
 
@@ -75,12 +79,22 @@ define(['tests/factories/eventFactory',
             });
 
             describe('addEvent()', function() {
-
                 it('add event successful', function() {
-                    var status = eventRepository.addEvent(event);
-                    expect(status).toBe(true);
+                    eventRepository.testaddEvent(event, function(newEvent){
+                        expect(newEvent.id).toEqual(event.id);
+                    }, function(){});
+                    $httpBackend.flush();
                 });
             });
+
+            describe('updateEvent()', function(){
+                it('update event successful', function(){
+                    eventRepository.updateEvent(event.id, event, function(editedEvent){
+                        expect(editedEvent.id).toEqual(event.id);
+                    }, function(){});
+                    $httpBackend.flush();
+                })
+            })
         });
 
     });

@@ -38,10 +38,17 @@ define(['app/model/event'], function (Event) {
             });
         };
 
+        this.testaddEvent = function(event, successCallback){
+            $http.post( this.urls.add, event).
+            success(function(){
+                successCallback(event);
+            });
+        };
+
         this.updateEvent = function(id, event, successCallback){
             $http.post(this.urls.update.replace(':eventId', id), event)
                 .success(function(){
-                successCallback();
+                successCallback(event);
             })
         };
     };
