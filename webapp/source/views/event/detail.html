@@ -52,8 +52,8 @@
         <h3>Comment</h3>
         <p>{{ guest.comment }}</p>
 
-        <form id="updateguest" action="#/updateGuest" method="get">
-            <button class="buttons" type="submit">update guest</button>
+        <form id="editguest" action="{{'/#updateGuest/events/'+ event.id + '/guests/' + guest.id}}" method="get">
+            <button class="buttons" type="submit">edit guest</button>
         </form>
 
         <div class="filler">

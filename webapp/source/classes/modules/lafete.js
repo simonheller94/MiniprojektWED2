@@ -47,10 +47,10 @@ define(['frameworks/angular',
         UpdateEventController.$inject = ['$scope', '$routeParams', 'EventRepository'];
         Lafete.controller('UpdateEventController', UpdateEventController);
 
-        NewGuestController.$inject = ['$scope', '$routeParams', 'EventRepository'];
+        NewGuestController.$inject = ['$scope', '$routeParams', 'GuestRepository'];
         Lafete.controller('NewGuestController', NewGuestController);
 
-        UpdateGuestController.$inject = ['$scope', 'EventRepository'];
+        UpdateGuestController.$inject = ['$scope','$routeParams', 'GuestRepository' ];
         Lafete.controller('UpdateGuestController', UpdateGuestController);
 
 
@@ -80,7 +80,7 @@ define(['frameworks/angular',
                    templateUrl: 'views/guest/newGuest.html'
                })
 
-               .when('/updateGuest', {
+               .when('/updateGuest/events/:eventId/guests/:guestId', {
                    controller: 'UpdateGuestController',
                    templateUrl: 'views/guest/updateGuest.html'
                })
