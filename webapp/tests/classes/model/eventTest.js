@@ -12,12 +12,6 @@ define(['app/model/event', 'tests/factories/eventFactory'],
                 event = EventFactory.createEvent();
             });
 
-            describe('event property name', function(){
-               it('sets name', function(){
-
-               })
-            });
-
             describe('event id', function() {
                 it('is a UUID', function() {
                     var uuidRegex = new RegExp('[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}');

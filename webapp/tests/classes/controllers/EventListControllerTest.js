@@ -1,6 +1,4 @@
-/**
- * Created by simon on 28.10.2015.
- */
+
 define(['app/controllers/event/eventListController',
     'frameworks/angular',
     'libraries/angularMocks',
@@ -11,6 +9,7 @@ define(['app/controllers/event/eventListController',
         var scope, eventRepository;
 
         beforeEach(AngularMocks.inject(function($injector) {
+
             scope = $injector.get('$rootScope').$new();
 
             var events = [{id: 1, name: 'Dinner'},{id: 2, name: 'Lunch'},{id: 3, name: 'Brunch'}];

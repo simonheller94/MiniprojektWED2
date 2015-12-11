@@ -10,7 +10,7 @@ define(['app/model/guest'], function (Guest) {
             update: '/api/events/:eventId/guests/:guestId'
         };
 
-        this.getGuest = function( eventId, guestId, successCallback ){
+        this.getGuest = function(eventId, guestId, successCallback ){
             $http.get( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId)).
             success(function(data){
                 successCallback(data);
@@ -60,6 +60,13 @@ define(['app/model/guest'], function (Guest) {
             })
         };
 
+        this.testupdateGuest = function(eventId, guestId, guest, successCallback){
+            $http.post( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId), guest)
+                .success(function(){
+                    successCallback(guest);
+                })
+
+        };
 
     };
 

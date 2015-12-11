@@ -4,6 +4,7 @@ define(['app/model/guest'], function(Guest){
     var NewGuestController = function($scope, $routeParams, GuestRepository){
 
         var eventId = $routeParams.eventId;
+        this.scope = $scope;
         $scope.errorMessage = false;
 
         $scope.guest = new Guest();
