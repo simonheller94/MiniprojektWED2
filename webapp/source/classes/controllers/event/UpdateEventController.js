@@ -5,7 +5,7 @@
 define([], function(){
     'use strict'
 
-    var UpdateEventController = function($scope, $routeParams, EventRepository){
+    var UpdateEventController = function($scope, $routeParams, $location, EventRepository){
 
         this.$scope = $scope;
 
@@ -23,7 +23,7 @@ define([], function(){
         };
 
 
-        $scope.updateEventInformation = function() {
+        $scope.updateEventInformation = function(loc) {
             EventRepository.updateEvent($scope.event.id, {
                 id: $scope.event.id,
                 name: $scope.event.name,
@@ -42,7 +42,7 @@ define([], function(){
                 },
                 maximumAmountOfGuests: $scope.event.maximumAmountOfGuests,
             }, function(){
-                console.log("ja");
+                $location.path(loc);
             });
         }
 

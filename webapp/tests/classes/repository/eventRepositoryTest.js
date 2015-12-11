@@ -80,7 +80,7 @@ define(['tests/factories/eventFactory',
 
             describe('addEvent()', function() {
                 it('add event successful', function() {
-                    eventRepository.testaddEvent(event, function(newEvent){
+                    eventRepository.addEvent(event, function(newEvent){
                         expect(newEvent.id).toEqual(event.id);
                     }, function(){});
                     $httpBackend.flush();

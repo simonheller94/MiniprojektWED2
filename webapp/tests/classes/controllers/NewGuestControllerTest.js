@@ -1,11 +1,8 @@
 
 define(['app/controllers/guest/NewGuestController',
         'frameworks/angular',
-        'libraries/angularMocks',
-        'app/repository/guestRepository',
-        'app/model/guest',
-        'tests/factories/guestFactory'],
-    function (NewGuestController, Angular, AngularMocks, GuestRepository, Guest, GuestFactory) {
+        'libraries/angularMocks'],
+    function (NewGuestController, Angular, AngularMocks, $location) {
         'use strict';
 
         var newGuestController, scope, routeParams, guestRepository;
@@ -22,7 +19,7 @@ define(['app/controllers/guest/NewGuestController',
                 }
             };
 
-            newGuestController = new NewGuestController(scope, routeParams, guestRepository);
+            newGuestController = new NewGuestController(scope, routeParams, $location, guestRepository);
 
         }));
 

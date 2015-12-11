@@ -16,56 +16,28 @@ define(['app/model/guest'], function (Guest) {
                 successCallback(data);
             })
         };
-        this.addGuest = function(id, guest, path, successCallback, errorCallback){
-            $http.post( this.urls.add.replace(':eventId', id), guest, path)
+        this.addGuest = function(eventId, guest, successCallback, errorCallback){
+            $http.post( this.urls.add.replace(':eventId', eventId), guest)
                 .success(function(){
-                    location.href=path;
-                    successCallback();
+                    successCallback(guest);
                 })
                 .error(function(){
                     errorCallback();
                 })
         };
 
-        this.testaddGuest = function(id, guest, successCallback){
-            $http.post( this.urls.add.replace(':eventId', id), guest)
-                .success(function(){
-                    successCallback(guest);
-                })
-        };
-
-        this.deleteGuest  = function(id, guest, path, successCallback){
-            $http.post(this.urls.delete.replace(':eventId', id).replace(':guestId', guest.id), guest, path)
-                .success(function(){
-                    location.href = path+'/';
-                    successCallback();
-                })
-        };
-
-        this.testdeleteGuest  = function(id, guest, successCallback){
-            $http.post(this.urls.delete.replace(':eventId', id).replace(':guestId', guest.id), guest)
+        this.deleteGuest  = function(eventId, guest, successCallback){
+            $http.post(this.urls.delete.replace(':eventId', eventId).replace(':guestId', guest.id), guest)
                 .success(function(){
                     successCallback();
                 })
         };
 
-        this.updateGuest = function( eventId, guestId, guest, path, successCallback, errorCallback ){
-            $http.post( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId), guest, path)
-                .success(function(){
-                location.href=path;
-                successCallback();
-            }).
-            error(function(){
-                errorCallback();
-            })
-        };
-
-        this.testupdateGuest = function(eventId, guestId, guest, successCallback){
+        this.updateGuest = function( eventId, guestId, guest, successCallback, errorCallback ){
             $http.post( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId), guest)
                 .success(function(){
-                    successCallback(guest);
-                })
-
+                successCallback(guest);
+            })
         };
 
     };

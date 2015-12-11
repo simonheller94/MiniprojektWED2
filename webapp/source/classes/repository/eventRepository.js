@@ -30,15 +30,7 @@ define(['app/model/event'], function (Event) {
                 })
         };
 
-        this.addEvent = function(event, path, successCallback){
-            $http.post( this.urls.add, event, path).
-            success(function(){
-                location.href=path;
-                successCallback();
-            });
-        };
-
-        this.testaddEvent = function(event, successCallback){
+        this.addEvent = function(event, successCallback){
             $http.post( this.urls.add, event).
             success(function(){
                 successCallback(event);

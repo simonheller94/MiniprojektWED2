@@ -1,11 +1,8 @@
 
 define(['app/controllers/event/NewEventController',
         'frameworks/angular',
-        'libraries/angularMocks',
-        'app/repository/eventRepository',
-        'app/model/event',
-        'tests/factories/eventFactory'],
-    function (NewEventController, Angular, AngularMocks, EventRepository, Event, EventFactory) {
+        'libraries/angularMocks'],
+    function (NewEventController, Angular, AngularMocks, $location) {
         'use strict';
 
         var newEventController, scope, eventRepository;
@@ -21,7 +18,7 @@ define(['app/controllers/event/NewEventController',
                 }
             };
 
-            newEventController = new NewEventController(scope, eventRepository);
+            newEventController = new NewEventController(scope, $location, eventRepository);
 
         }));
 

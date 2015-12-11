@@ -1,7 +1,7 @@
 
 define(['app/model/guest'], function(Guest){
 
-    var NewGuestController = function($scope, $routeParams, GuestRepository){
+    var NewGuestController = function($scope, $routeParams, $location, GuestRepository){
 
         var eventId = $routeParams.eventId;
         this.scope = $scope;
@@ -10,8 +10,9 @@ define(['app/model/guest'], function(Guest){
         $scope.guest = new Guest();
 
         $scope.addNewGuest = function(loc){
-            GuestRepository.addGuest(eventId, $scope.guest, loc+eventId,  function()
+            GuestRepository.addGuest(eventId, $scope.guest, function()
             {
+                $location.path(loc+eventId);
 
             }, function(){
                 $scope.errorMessage = true;

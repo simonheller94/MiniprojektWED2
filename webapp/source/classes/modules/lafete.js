@@ -41,16 +41,16 @@ define(['frameworks/angular',
         EventDetailController.$inject = ['$scope', '$routeParams', 'EventRepository', 'GuestRepository'];
         Lafete.controller('EventDetailController', EventDetailController);
 
-        NewEventController.$inject = ['$scope', 'EventRepository'];
+        NewEventController.$inject = ['$scope', '$location', 'EventRepository'];
         Lafete.controller('NewEventController', NewEventController);
 
-        UpdateEventController.$inject = ['$scope', '$routeParams', 'EventRepository'];
+        UpdateEventController.$inject = ['$scope', '$routeParams', '$location', 'EventRepository'];
         Lafete.controller('UpdateEventController', UpdateEventController);
 
-        NewGuestController.$inject = ['$scope', '$routeParams', 'GuestRepository'];
+        NewGuestController.$inject = ['$scope', '$routeParams', '$location', 'GuestRepository'];
         Lafete.controller('NewGuestController', NewGuestController);
 
-        UpdateGuestController.$inject = ['$scope','$routeParams', 'GuestRepository' ];
+        UpdateGuestController.$inject = ['$scope','$routeParams', '$location', 'GuestRepository' ];
         Lafete.controller('UpdateGuestController', UpdateGuestController);
 
 

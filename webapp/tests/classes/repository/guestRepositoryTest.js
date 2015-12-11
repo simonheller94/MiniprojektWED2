@@ -73,7 +73,7 @@ define(['tests/factories/eventFactory',
 
             describe('addGuest()', function() {
                 it('add guest successful', function() {
-                    guestRepository.testaddGuest(event.id, guest, function(newGuest){
+                    guestRepository.addGuest(event.id, guest, function(newGuest){
                         expect(newGuest.id).toEqual(guest.id);
                     }, function(){});
                     $httpBackend.flush();
@@ -82,7 +82,7 @@ define(['tests/factories/eventFactory',
 
             describe('deleteGuest()', function(){
                 it('delete guest successful', function(){
-                    guestRepository.testdeleteGuest(event.id, guest, function(success){
+                    guestRepository.deleteGuest(event.id, guest, function(success){
                         expect(success).ToEqual('delete successful');
                     }, function(){});
                     $httpBackend.flush();
@@ -91,7 +91,7 @@ define(['tests/factories/eventFactory',
 
             describe('updateGuest()', function() {
                 it('update guest successful', function() {
-                    guestRepository.testupdateGuest(event.id, guest.id, guest, function(newGuest){
+                    guestRepository.updateGuest(event.id, guest.id, guest, function(newGuest){
                         expect(newGuest.id).toEqual(guest.id);
                     }, function(){});
                     $httpBackend.flush();
