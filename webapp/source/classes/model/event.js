@@ -12,24 +12,6 @@ define(['app/services/uuidService'], function(uuidService) {
         this.maxGuests = maxGuests;
         this.guests = [];
 
-        Object.defineProperty(this, 'begin', {
-            get: function() {
-                return this.times.begin;
-            },
-            set: function(begin) {
-                this.times.begin = new Date(begin);
-            }
-        });
-
-        Object.defineProperty(this, 'end', {
-            get: function() {
-                return this.times.end;
-            },
-            set: function(end) {
-                this.times.end = new Date(end);
-            }
-        });
-
     };
 
     Event.createFromDTO = function(jsonData) {
@@ -40,10 +22,12 @@ define(['app/services/uuidService'], function(uuidService) {
             jsonData.targetGroup,
             jsonData.contributionsDescription,
             jsonData.location,
-            jsonData.times,
+            {
+                begin: new Date(jsonData.times.begin),
+                end: new Date(jsonData.times.end)
+            },
             jsonData.maxGuests
         )
-
     };
 
     return Event;
