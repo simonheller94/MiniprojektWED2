@@ -11,13 +11,10 @@ define([], function () {
         } );
 
         $scope.updateGuest = function(loc){
-            GuestRepository.updateGuest(eventId, $routeParams.guestId,{
-                name: $scope.guest.name,
-                contribution: $scope.guest.contribution,
-                comment: $scope.guest.comment
-            }, function(){
-                var path = loc+eventId;
-                $location.path(path);
+            GuestRepository.updateGuest(eventId, $routeParams.guestId,$scope.guest,
+                function(){
+                    var path = loc+eventId;
+                    $location.path(path);
             });
         };
 

@@ -7,6 +7,7 @@ define([], function(){
     var EventDetailController = function($scope, $routeParams, EventRepository, GuestRepository) {
 
         var eventId = $routeParams.eventId;
+        var guest = $routeParams.guest;
 
         this.scope = $scope;
 
@@ -14,8 +15,8 @@ define([], function(){
             this.scope.event = event;
         }.bind(this));
 
-        $scope.deleteGuest = function(loc, guest){
-            GuestRepository.deleteGuest(eventId, guest, loc+eventId, function(){
+        $scope.deleteGuest = function(){
+            GuestRepository.deleteGuest(eventId, guest, function(){
 
             }.bind(this));
         }

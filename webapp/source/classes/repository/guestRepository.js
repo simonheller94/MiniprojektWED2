@@ -33,7 +33,7 @@ define(['app/model/guest'], function (Guest) {
                 })
         };
 
-        this.updateGuest = function( eventId, guestId, guest, successCallback, errorCallback ){
+        this.updateGuest = function( eventId, guestId, guest, successCallback){
             $http.post( this.urls.get.replace(':eventId', eventId).replace(':guestId', guestId), guest)
                 .success(function(){
                 successCallback(guest);

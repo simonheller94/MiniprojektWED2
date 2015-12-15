@@ -12,59 +12,23 @@ define(['app/services/uuidService'], function(uuidService) {
         this.maxGuests = maxGuests;
         this.guests = [];
 
-        /*Object.defineProperty(location, 'name', {
+        Object.defineProperty(this, 'begin', {
             get: function() {
-                return this.name;
-            },
-            set: function(name) {
-                this.name = name;
-            }
-        });
-
-        Object.defineProperty(location, 'street', {
-            get: function() {
-                return this.street;
-            },
-            set: function(street) {
-                this.street = street;
-            }
-        });
-
-        Object.defineProperty(location, 'plz', {
-            get: function() {
-                return this.plz;
-            },
-            set: function(plz) {
-                this.plz = plz;
-            }
-        });
-
-        Object.defineProperty(location, 'city', {
-            get: function() {
-                return this.city;
-            },
-            set: function(city) {
-                this.city = city;
-            }
-        });
-
-        Object.defineProperty(times, 'begin', {
-            get: function() {
-                return this.begin;
+                return this.times.begin;
             },
             set: function(begin) {
-                this.begin = begin;
+                this.times.begin = new Date(begin);
             }
         });
 
-        Object.defineProperty(times, 'end', {
+        Object.defineProperty(this, 'end', {
             get: function() {
-                return this.end;
+                return this.times.end;
             },
             set: function(end) {
-                this.end = end;
+                this.times.end = new Date(end);
             }
-        });*/
+        });
 
     };
 
